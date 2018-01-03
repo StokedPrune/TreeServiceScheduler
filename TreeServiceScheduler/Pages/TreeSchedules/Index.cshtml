@@ -1,0 +1,243 @@
+@page
+@model TreeServiceScheduler.Pages.TreeSchedules.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <input type="submit" name="filterButton" value="BLI BLI" class="btn btn-default"/>
+            <input type="submit" name="filterButton" value="BUDERIM" class="btn btn-default"  />
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+@*<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>*@
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.RecordDateSort"
+               asp-route-currentFilter="@Model.CurrentFilter">
+                @Html.DisplayNameFor(model => model.TreeSchedule[0].RecordDate)
+            </a>
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.PlantingDateSort"
+               asp-route-currentFilter="@Model.CurrentFilter">
+                @Html.DisplayNameFor(model => model.TreeSchedule[0].PlantingDate)
+            </a>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Genus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Species)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].NumTrees)
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.AddressSort"
+               asp-route-currentFilter="@Model.CurrentFilter">
+                @Html.DisplayNameFor(model => model.TreeSchedule[0].Address)
+            </a>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Locality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Crmid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].AgeClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].ProjectNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].DrawingNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service1DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service1DateComplete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service2DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service2DateComplete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service1By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service2By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service3DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service3DateComplete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service3By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service4DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service4DateComplete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service4By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].DataSource)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.TreeSchedule) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlantingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Species)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumTrees)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Crmid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgeClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrawingNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service1DateDue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service1DateComplete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service2DateDue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service2DateComplete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service1By)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service2By)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service3DateDue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service3DateComplete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service3By)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service4DateDue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service4DateComplete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service4By)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataSource)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.TreeSchedule.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.TreeSchedule.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./>Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.TreeSchedule.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.TreeSchedule.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

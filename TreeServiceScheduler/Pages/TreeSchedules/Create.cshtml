@@ -1,0 +1,164 @@
+@page
+@model TreeServiceScheduler.Pages.TreeSchedules.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>TreeSchedule</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.RecordDate" class="control-label"></label>
+                <input asp-for="TreeSchedule.RecordDate" class="form-control" />
+                <span asp-validation-for="TreeSchedule.RecordDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.PlantingDate" class="control-label"></label>
+                <input asp-for="TreeSchedule.PlantingDate" class="form-control" />
+                <span asp-validation-for="TreeSchedule.PlantingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Genus" class="control-label"></label>
+                <input asp-for="TreeSchedule.Genus" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Genus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Species" class="control-label"></label>
+                <input asp-for="TreeSchedule.Species" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Species" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.NumTrees" class="control-label"></label>
+                <input asp-for="TreeSchedule.NumTrees" class="form-control" />
+                <span asp-validation-for="TreeSchedule.NumTrees" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Address" class="control-label"></label>
+                <input asp-for="TreeSchedule.Address" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Locality" class="control-label"></label>
+                <input asp-for="TreeSchedule.Locality" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Locality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Location" class="control-label"></label>
+                <input asp-for="TreeSchedule.Location" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Crmid" class="control-label"></label>
+                <input asp-for="TreeSchedule.Crmid" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Crmid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.AgeClass" class="control-label"></label>
+                <input asp-for="TreeSchedule.AgeClass" class="form-control" />
+                <span asp-validation-for="TreeSchedule.AgeClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Username" class="control-label"></label>
+                <input asp-for="TreeSchedule.Username" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Comments" class="control-label"></label>
+                <input asp-for="TreeSchedule.Comments" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.ProjectNo" class="control-label"></label>
+                <input asp-for="TreeSchedule.ProjectNo" class="form-control" />
+                <span asp-validation-for="TreeSchedule.ProjectNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.DrawingNo" class="control-label"></label>
+                <input asp-for="TreeSchedule.DrawingNo" class="form-control" />
+                <span asp-validation-for="TreeSchedule.DrawingNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service1DateDue" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service1DateDue" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service1DateDue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service1DateComplete" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service1DateComplete" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service1DateComplete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service2DateDue" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service2DateDue" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service2DateDue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service2DateComplete" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service2DateComplete" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service2DateComplete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service1By" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service1By" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service1By" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service2By" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service2By" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service2By" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service3DateDue" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service3DateDue" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service3DateDue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service3DateComplete" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service3DateComplete" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service3DateComplete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service3By" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service3By" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service3By" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service4DateDue" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service4DateDue" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service4DateDue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service4DateComplete" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service4DateComplete" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service4DateComplete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.Service4By" class="control-label"></label>
+                <input asp-for="TreeSchedule.Service4By" class="form-control" />
+                <span asp-validation-for="TreeSchedule.Service4By" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TreeSchedule.DataSource" class="control-label"></label>
+                <input asp-for="TreeSchedule.DataSource" class="form-control" />
+                <span asp-validation-for="TreeSchedule.DataSource" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

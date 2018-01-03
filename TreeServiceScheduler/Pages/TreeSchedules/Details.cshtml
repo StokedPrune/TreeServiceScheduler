@@ -1,0 +1,181 @@
+@page
+@model TreeServiceScheduler.Pages.TreeSchedules.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TreeSchedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.RecordDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.RecordDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.PlantingDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.PlantingDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Genus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Genus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Species)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Species)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.NumTrees)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.NumTrees)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Locality)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Locality)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Location)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Crmid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Crmid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.AgeClass)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.AgeClass)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Username)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Username)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Comments)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Comments)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.ProjectNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.ProjectNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.DrawingNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.DrawingNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service1DateDue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service1DateDue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service1DateComplete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service1DateComplete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service2DateDue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service2DateDue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service2DateComplete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service2DateComplete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service1By)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service1By)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service2By)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service2By)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service3DateDue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service3DateDue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service3DateComplete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service3DateComplete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service3By)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service3By)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service4DateDue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service4DateDue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service4DateComplete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service4DateComplete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.Service4By)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.Service4By)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSchedule.DataSource)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSchedule.DataSource)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.TreeSchedule.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
