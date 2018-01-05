@@ -20,7 +20,8 @@ namespace TreeServiceScheduler.Pages.TreeSchedules
         public string ServiceDate1DueSort { get; set; }
         public string LocalitySort { get; set; }
         public string CurrentSort { get; set; }
-        public string CurrentFilter { get; set; }
+        public string CurrentLocality { get; set; }
+        public string CurrentButton { get; set; }
 
         public IndexModel(TreeServiceScheduler.Models.warehouseContext context)
         {
@@ -30,14 +31,15 @@ namespace TreeServiceScheduler.Pages.TreeSchedules
         public PaginatedList<TreeSchedule> TreeSchedule { get;set; }
         //public PaginatedList<TreeSchedule> TreeSchedule { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, string filterButton,  int? pageIndex)
+        public async Task OnGetAsync(string sortOrder, string currentLocality, string searchLocality, string currentButton,string filterButton,  int? pageIndex)
         {
 
-            if (sortOrder != null)
-            {
+            //if (sortOrder != null)
+            //{
                 CurrentSort = sortOrder;
-            }
-            
+            //}
+            CurrentButton = currentButton;
+            CurrentLocality = currentLocality;
             // switch the sort around
             //RecordDateSort = string.IsNullOrEmpty(sortOrder) ? "recordDate_desc" : "";
             RecordDateSort = sortOrder == "RecordDate" ? "recorddate_desc" : "RecordDate";
@@ -46,42 +48,79 @@ namespace TreeServiceScheduler.Pages.TreeSchedules
 
             AddressSort = sortOrder == "Address" ?  "address_desc":"Address";
 
-            if (filterButton != null)
+            if (filterButton != null && searchLocality != null)
             {
                 pageIndex = 1;
-                CurrentFilter = filterButton;
+                CurrentButton = filterButton;
+                CurrentLocality = searchLocality;
             }
-            else
+
+            if (filterButton != null && searchLocality == null)
             {
-                CurrentFilter = currentFilter;
+                pageIndex = 1;
+                CurrentButton = filterButton;
             }
+
+            if (searchLocality != null && filterButton == null)
+            {
+                pageIndex = 1;
+                CurrentLocality = searchLocality;
+            }
+
+            
+
+            //if (filterButton != null)
+            //{
+            //    pageIndex = 1;
+            //    CurrentButton = filterButton;
+            //    CurrentLocality = currentLocality;
+            //}
+            //if (searchLocality != null)
+            //{
+            //    pageIndex = 1;
+            //    CurrentLocality = searchLocality;
+            //    CurrentButton = currentButton;
+            //}
+            //else
+            //{
+            //    CurrentLocality = currentLocality;
+            //    CurrentButton = currentButton;
+            //}
 
 
             IQueryable<TreeSchedule> treeSheduleIQueryable = from s in _context.TreeSchedule select s;
 
 
-            //filter button?
-            if (!string.IsNullOrEmpty(CurrentFilter))
+            //filter button or search string?
+            if (!string.IsNullOrEmpty(CurrentButton))
             {
-                switch (CurrentFilter)
+                switch (CurrentButton)
                 {
-                    case "Service 1 Due":
+                    case "No Planting Date":
                         treeSheduleIQueryable = treeSheduleIQueryable.Where(s =>
-                            (s.Service1DateDue < DateTime.Today && string.IsNullOrWhiteSpace(s.Service1DateComplete.ToString())));
+                            (string.IsNullOrWhiteSpace(s.PlantingDate.ToString())));
                         break;
-                    case "BLI BLI":
-                        treeSheduleIQueryable = treeSheduleIQueryable.Where((s => s.Locality == "BLI BLI"));
-                        //treeSheduleIQ = treeSheduleIQ.Where(s =>
-                        //    ((s.Service1DateDue < DateTime.Today && string.IsNullOrWhiteSpace(s.Service1DateComplete.ToString())) ||
-                        //     (s.Service2DateDue < DateTime.Today && string.IsNullOrWhiteSpace(s.Service2DateComplete.ToString())) ||
-                        //     (s.Service3DateDue < DateTime.Today && string.IsNullOrWhiteSpace(s.Service3DateComplete.ToString()))
-                        //    ));
+                    case "Service Due":
+                        treeSheduleIQueryable = treeSheduleIQueryable.Where(s =>
+                            ((s.Service1DateDue <= DateTime.Today && string.IsNullOrWhiteSpace(s.Service1DateComplete.ToString())) ||
+                             (s.Service2DateDue <= DateTime.Today && string.IsNullOrWhiteSpace(s.Service2DateComplete.ToString())) ||
+                             (s.Service3DateDue <= DateTime.Today && string.IsNullOrWhiteSpace(s.Service3DateComplete.ToString())) ||
+                             (s.Service4DateDue <= DateTime.Today && string.IsNullOrWhiteSpace(s.Service4DateComplete.ToString())) 
+                             //(s.Service5DateDue < DateTime.Today && string.IsNullOrWhiteSpace(s.Service3DateComplete.ToString())) 
+                            ));
                         break;
-                    case "BUDERIM":
-                        treeSheduleIQueryable = treeSheduleIQueryable.Where(s => s.Locality == "BUDERIM");
-                        break;
+                    //default:
+                    //    treeSheduleIQueryable = treeSheduleIQueryable.Where(s => s.Locality.Contains(CurrentLocality));
+                    //    break;
                 }
             }
+
+
+            if (!string.IsNullOrEmpty(CurrentLocality))
+            {
+                treeSheduleIQueryable = treeSheduleIQueryable.Where(s => s.Locality.Contains(CurrentLocality));
+            }
+
 
             switch (CurrentSort)
             {

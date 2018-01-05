@@ -30,7 +30,11 @@ namespace TreeServiceScheduler
             services.AddDbContext<warehouseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddMvc();
+            //Redirect the default start page
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/TreeSchedules/Index", "");
+            });
 
         }
 

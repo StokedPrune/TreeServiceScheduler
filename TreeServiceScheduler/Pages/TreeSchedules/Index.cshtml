@@ -2,10 +2,10 @@
 @model TreeServiceScheduler.Pages.TreeSchedules.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tree Service Schedule";
 }
 
-<h2>Index</h2>
+<h2>Tree Service Schedule</h2>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -14,8 +14,10 @@
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
-            <input type="submit" name="filterButton" value="BLI BLI" class="btn btn-default"/>
-            <input type="submit" name="filterButton" value="BUDERIM" class="btn btn-default"  />
+            <input type="submit" name="filterButton" value="Service Due" class="btn btn-default"/>
+            <input type="submit" name="filterButton" value="No Planting Date" class="btn btn-default"  />
+            <input type="text" name="SearchLocality" value="@Model.CurrentLocality" />
+            <input type="submit" value="Locality Filter" class="btn btn-default" />
             <a asp-page="./Index">Back to full List</a>
         </p>
     </div>
@@ -25,7 +27,7 @@
     <div class="form-actions no-color">
         <p>
             Find by name:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="text" name="SearchString" value="@Model.CurrentLocality" />
             <input type="submit" value="Search" class="btn btn-default" /> |
             <a asp-page="./Index">Back to full List</a>
         </p>
@@ -36,14 +38,19 @@
     <thead>
     <tr>
         <th>
+            Actions
+        </th>
+        <th>
             <a asp-page="./Index" asp-route-sortOrder="@Model.RecordDateSort"
-               asp-route-currentFilter="@Model.CurrentFilter">
+               asp-route-currentLocality="@Model.CurrentLocality"
+               asp-route-currentButton="@Model.CurrentButton">
                 @Html.DisplayNameFor(model => model.TreeSchedule[0].RecordDate)
             </a>
         </th>
         <th>
             <a asp-page="./Index" asp-route-sortOrder="@Model.PlantingDateSort"
-               asp-route-currentFilter="@Model.CurrentFilter">
+               asp-route-currentLocality="@Model.CurrentLocality"
+               asp-route-currentButton="@Model.CurrentButton">
                 @Html.DisplayNameFor(model => model.TreeSchedule[0].PlantingDate)
             </a>
         </th>
@@ -58,7 +65,8 @@
         </th>
         <th>
             <a asp-page="./Index" asp-route-sortOrder="@Model.AddressSort"
-               asp-route-currentFilter="@Model.CurrentFilter">
+               asp-route-currentLocality="@Model.CurrentLocality"
+               asp-route-currentButton="@Model.CurrentButton">
                 @Html.DisplayNameFor(model => model.TreeSchedule[0].Address)
             </a>
         </th>
@@ -71,21 +79,21 @@
         <th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].Crmid)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].AgeClass)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].Username)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].Comments)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].ProjectNo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].DrawingNo)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].Service1DateDue)
         </th>
@@ -93,14 +101,14 @@
             @Html.DisplayNameFor(model => model.TreeSchedule[0].Service1DateComplete)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service1By)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].Service2DateDue)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].Service2DateComplete)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TreeSchedule[0].Service1By)
-        </th>
+        </th>        
         <th>
             @Html.DisplayNameFor(model => model.TreeSchedule[0].Service2By)
         </th>
@@ -132,6 +140,11 @@
     @foreach (var item in Model.TreeSchedule) {
         <tr>
             <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                @*<a asp-page="./Details" asp-route-id="@item.Id">Details</a> |*@
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.RecordDate)
             </td>
             <td>
@@ -158,21 +171,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Crmid)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.AgeClass)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Username)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comments)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.ProjectNo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DrawingNo)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Service1DateDue)
             </td>
@@ -180,14 +193,14 @@
                 @Html.DisplayFor(modelItem => item.Service1DateComplete)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Service1By)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Service2DateDue)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Service2DateComplete)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service1By)
-            </td>
+            </td>         
             <td>
                 @Html.DisplayFor(modelItem => item.Service2By)
             </td>
@@ -212,11 +225,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DataSource)
             </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+
         </tr>
     }
     </tbody>
@@ -230,14 +239,16 @@
 <a asp-page="./>Index"
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.TreeSchedule.PageIndex - 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
+   asp-route-currentLocality="@Model.CurrentLocality"
+   asp-route-currentButton="@Model.CurrentButton"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.TreeSchedule.PageIndex + 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
+   asp-route-currentLocality="@Model.CurrentLocality"
+   asp-route-currentButton="@Model.CurrentButton"
    class="btn btn-default @nextDisabled">
     Next
 </a>
